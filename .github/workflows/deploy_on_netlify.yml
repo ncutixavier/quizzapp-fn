@@ -1,4 +1,3 @@
-
 name: Deploy to Netlify
 
 on:
@@ -14,15 +13,7 @@ jobs:
         run: npm install
       - name: Build for web
         run: npx expo export -p web
-  # Add these new steps for creating the _redirects file:
-      - name: Create public directory (if it doesn't exist)
-        run: mkdir -p public
-      - name: Create _redirects file
-        run: echo '/* /index.html 200' >> public/_redirects  # Double quotes for proper path handling
+      - name: Login to Netlify (using access token stored as secret)
+        run: netlify login --access-token ${{ secrets.NETLIFY_ACCESS_TOKEN }}
       - name: Deploy to Netlify
-        uses: netlify/actions@v1
-        with:
-          deploy_id: ${{ secrets.NETLIFY_DEPLOY_ID }}
-          build_command: npm install && expo prebuild
-          publish_directory: dist
-          environment: ${{ secrets.NETLIFY_ENV }} # Optional: Set environment variables
+        run: netlify deploy --dir=dist
