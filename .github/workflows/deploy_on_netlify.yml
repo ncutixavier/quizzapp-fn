@@ -16,4 +16,4 @@ jobs:
       - name: Login to Netlify (using access token stored as secret)
         run: netlify login
       - name: Deploy to Netlify
-        run: netlify deploy --dir=dist
+        run: netlify deploy
