@@ -14,6 +14,6 @@ jobs:
       - name: Build for web
         run: npx expo export -p web
       - name: Login to Netlify (using access token stored as secret)
-        run: netlify login --token ${{ secrets.NETLIFY_ACCESS_TOKEN }}
+        run: netlify login
       - name: Deploy to Netlify
         run: netlify deploy --dir=dist
