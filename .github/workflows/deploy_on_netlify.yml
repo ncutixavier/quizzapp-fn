@@ -1,0 +1,28 @@
+
+name: Deploy to Netlify
+
+on:
+  push:
+    branches: [ dev ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Build for web
+        run: npx expo export -p web
+  # Add these new steps for creating the _redirects file:
+      - name: Create public directory (if it doesn't exist)
+        run: mkdir -p public
+      - name: Create _redirects file
+        run: echo '/* /index.html 200' >> public/_redirects  # Double quotes for proper path handling
+      - name: Deploy to Netlify
+        uses: netlify/actions@v1
+        with:
+          deploy_id: ${{ secrets.NETLIFY_DEPLOY_ID }}
+          build_command: npm install && expo prebuild
+          publish_directory: dist
+          environment: ${{ secrets.NETLIFY_ENV }} # Optional: Set environment variables
