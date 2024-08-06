@@ -1,11 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Questions from './src/screens/Questions';
+import client from './src/config/apolloClient';
+import { ApolloProvider } from '@apollo/client';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Proviza App!</Text>
-    </View>
+    <ApolloProvider client={client}>
+      <View style={styles.container}>
+        <Text style={styles.title}>Proviza App!</Text>
+        <Questions />
+      </View>
+    </ApolloProvider>
   );
 }
 
@@ -17,6 +23,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    color: "#fff"
+    color: "#fff",
+    fontSize: 20
   }
 });
