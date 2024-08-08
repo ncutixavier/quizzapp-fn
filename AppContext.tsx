@@ -1,12 +1,11 @@
-// Home
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, StatusBar } from 'react-native';
-import Questions from '../screens/Questions';
-import client from '../config/apolloClient';
+import Questions from './src/screens/Questions';
+import client from './src/config/apolloClient';
 import { ApolloProvider } from '@apollo/client';
-import useTheme from '../theme/useTheme';
+import useTheme from './src/theme/useTheme';
 
-export default function Home() {
+export default function AppContext() {
   const { theme, toggleTheme } = useTheme()
 
   return (
@@ -16,6 +15,7 @@ export default function Home() {
         backgroundColor={theme.backgroundColor}
       />
       <View style={{ ...styles.container, backgroundColor: theme.backgroundColor }}>
+        <Text style={{ ...styles.title, color: theme.textColor }}>Proviza App!</Text>
         <TouchableOpacity onPress={toggleTheme}>
           <Text style={{ color: theme.textColor }}>Toggle Theme</Text>
         </TouchableOpacity>

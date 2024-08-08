@@ -1,29 +1,27 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Questions from './src/screens/Questions';
-import client from './src/config/apolloClient';
-import { ApolloProvider } from '@apollo/client';
+import React, { useContext } from 'react';
+import AppContext from './AppContext';
+import ThemeProvider from './src/theme/ThemeProvider';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import SplashScreen from './src/screens/SplashScreen';
+import Home from './src/screens/Home';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <ApolloProvider client={client}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Proviza App!</Text>
-        <Questions />
-      </View>
-    </ApolloProvider>
+    <ThemeProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Splash"
+            component={SplashScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen name="Home" component={Home} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#00291A',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    color: "#fff",
-    fontSize: 20
-  }
-});
