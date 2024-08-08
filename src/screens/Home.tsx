@@ -1,7 +1,7 @@
 // Home
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, StatusBar } from 'react-native';
-import Questions from '../screens/Questions';
+import Questions from '../components/Questions';
 import client from '../config/apolloClient';
 import { ApolloProvider } from '@apollo/client';
 import useTheme from '../theme/useTheme';
@@ -10,7 +10,7 @@ export default function Home() {
   const { theme, toggleTheme } = useTheme()
 
   return (
-    <ApolloProvider client={client}>
+    <>
       <StatusBar
         barStyle={theme.backgroundColor === '#000000' ? 'light-content' : 'dark-content'}
         backgroundColor={theme.backgroundColor}
@@ -21,7 +21,7 @@ export default function Home() {
         </TouchableOpacity>
         <Questions />
       </View>
-    </ApolloProvider>
+    </>
   );
 }
 
