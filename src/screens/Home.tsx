@@ -2,8 +2,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, StatusBar } from 'react-native';
 import Questions from '../components/Questions';
-import client from '../config/apolloClient';
-import { ApolloProvider } from '@apollo/client';
 import useTheme from '../theme/useTheme';
 
 export default function Home() {
@@ -16,9 +14,9 @@ export default function Home() {
         backgroundColor={theme.backgroundColor}
       />
       <View style={{ ...styles.container, backgroundColor: theme.backgroundColor }}>
-        <TouchableOpacity onPress={toggleTheme}>
+        {/* <TouchableOpacity onPress={toggleTheme}>
           <Text style={{ color: theme.textColor }}>Toggle Theme</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <Questions />
       </View>
     </>

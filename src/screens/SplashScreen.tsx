@@ -6,9 +6,9 @@ import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 type RootStackParamList = {
-    Home: undefined;  // Define other screens as needed
+    Login: undefined;  // Define other screens as needed
 };
-type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
+type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
 const SplashScreen = () => {
     const { theme } = useTheme()
@@ -16,7 +16,7 @@ const SplashScreen = () => {
 
     useEffect(() => {
         const timeout = setTimeout(() => {
-            navigation.navigate('Home')
+            navigation.navigate('Login')
         }, 2000);
         return () => clearTimeout(timeout)
     }, [])
@@ -36,8 +36,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     splash: {
-        fontSize: 15,
-        fontWeight: 700
+        fontSize: 18,
+        fontWeight: 700,
+        letterSpacing: 1.5
     }
 })
 
