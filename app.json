@@ -1,16 +1,16 @@
 {
   "expo": {
-    "name": "quizzapp-fn",
-    "slug": "quizzapp-fn",
+    "name": "quizzapp",
+    "slug": "quizzapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "quizzapp",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#16325B"
     },
     "ios": {
       "supportsTablet": true
